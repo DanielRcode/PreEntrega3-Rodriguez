@@ -20,11 +20,12 @@ drawCart()
 function drawCart() {
     cartContainer.innerHTML = ""
     if(cart && cart.length > 0){
-        let totalCart = 0;
+
+        let totalCart = cart.reduce((acc, prod) => acc + (prod.price * prod.quantity), 0)
+
     cart.forEach((prod) => {
         const { id, name, price, quantity, img } = prod
         const subtotal = price * quantity
-        totalCart = totalCart + subtotal
         cartContainer.innerHTML += `<div class="cart_product">
         <img
           class="cart_product-image"
@@ -63,13 +64,13 @@ function drawCart() {
 }
 
 
-
 function deleteProduct(id) {
     const item = cart.find((prod) => prod.id === id)
     let index = cart.findIndex((prod) => prod.id === id)
     cart.splice(index, 1)
     localStorage.setItem("products-in-cart", JSON.stringify(cart))
-    localStorage.setItem("cart-number", JSON.stringify(cart))
+    let finalTotal = cart.reduce((acc, prod) => acc + prod.quantity, 0)
+    localStorage.setItem("cart-number", JSON.stringify(finalTotal))
 
     drawCart()
    
@@ -95,4 +96,3 @@ function processPurchase(){
     emptyCart.style.display = "block"
     cartActions.style.display = "none"
 }
-
