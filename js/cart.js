@@ -8,9 +8,6 @@ const cartActions = document.querySelector(".cart_actions")
 const purchaseBtn = document.querySelector(".cart_actions-complete")
 const mainTitle = document.querySelector(".main_title")
 
-function updateNumber() {
-    cartQtity.innerHTML = `${cartNumber}`
-}
 clearBtn.addEventListener("click", clearCart)
 
 purchaseBtn.addEventListener("click", processPurchase)
@@ -81,7 +78,6 @@ function clearCart() {
     cart.length = 0
     localStorage.clear()
     cartContainer.innerHTML = ""
-    cartNumber = 0
     emptyCart.style.display = "block"
     cartActions.style.display = "none"
 }
@@ -90,7 +86,6 @@ function processPurchase(){
     cart.length = 0
     localStorage.clear()
     cartContainer.innerHTML = ""
-    cartNumber = 0
     mainTitle.innerHTML=`Have a nice day!`
     emptyCart.innerHTML= `Thank you for your purchase <i class="bi bi-emoji-laughing"></i>`
     emptyCart.style.display = "block"
