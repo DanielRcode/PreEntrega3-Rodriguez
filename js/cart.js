@@ -67,7 +67,7 @@ function drawCart() {
 function deleteProduct(id) {
     const item = cart.find((prod) => prod.id === id)
     let index = cart.findIndex((prod) => prod.id === id)
-    cart.splice(item[index], 1)
+    cart.splice(index, 1)
     localStorage.setItem("products-in-cart", JSON.stringify(cart))
     localStorage.setItem("cart-number", JSON.stringify(cart))
 
