@@ -23,7 +23,6 @@ const productContainer = document.querySelector(".product_container")
 const typeButton = document.querySelectorAll(".type_button")
 const qtyNumber = document.querySelector(".number-change")
 const mainTitle = document.querySelector(".main_title")
-const cartNumber = JSON.parse(localStorage.getItem("cart-number"))
 
 
 let cart;
@@ -85,12 +84,7 @@ function addProduct(id) {
 }
 
 function updateNumber() {
-    let numberT
-    if(cartNumber){
-        numberT = cartNumber
-    }else{
-        numberT = cart.reduce((acc, product) => acc + product.quantity, 0)
-    }
+    let numberT = cart.reduce((acc, product) => acc + product.quantity, 0)
     qtyNumber.innerHTML = `${numberT}`
     localStorage.setItem("cart-number", JSON.stringify(numberT))
 }
