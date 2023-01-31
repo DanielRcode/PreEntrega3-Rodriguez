@@ -89,8 +89,8 @@ function updateNumber() {
     if(cartNumber){
         numberT = cartNumber
     }else{
+        numberT = cart.reduce((acc, product) => acc + product.quantity, 0)
     }
-    numberT = cart.reduce((acc, product) => acc + product.quantity, 0)
     qtyNumber.innerHTML = `${numberT}`
     localStorage.setItem("cart-number", JSON.stringify(numberT))
 }
